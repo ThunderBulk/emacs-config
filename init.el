@@ -139,6 +139,7 @@
 (setq deft-use-filename-as-title t)
 (setq deft-file-naming-rules '((nospace . "-")
                                (case-fn . downcase)))
+(setq markdown-enable-wiki-links t)
 (setq deft-auto-save-interval 5)
 (global-set-key [f8] 'deft)
 (setq deft-strip-summary-regexp
