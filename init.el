@@ -148,6 +148,45 @@
               "\\)"))
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; org-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(setq org-directory "~/Dropbox/org")
+
+;; AGENDA
+(setq org-agenda-files (list "~/Dropbox/org"))
+
+;; ORG CAPTURE
+(setq org-capture-templates
+      (quote (("t" "todo" entry (file "inbox.org")
+               "* TODO %?\n%U\n%a\n")
+              ("n" "note" entry (file "inbox.org")
+               "* %? :NOTE:\n%U\n%a\n")
+              ("j" "Journal" entry (file+datetree "journal.org")
+               "* %?\n%U\n")
+              )))
+(add-hook 'org-mode-hook 'org-indent-mode)
+;; display inline images
+(add-hook 'org-mode-hook (lambda () (org-toggle-inline-images 1)))
+
+;; Use ido for completion
+(setq org-return-follows-link t)
+
+;; wraps the lines in org-mode
+(setq org-startup-truncated nil)
+
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; org-superstar
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package org-superstar
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Magit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package magit
@@ -264,7 +303,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ace-window markdown-mode magit which-key use-package spacemacs-theme powerline monokai-theme dracula-theme deft counsel beacon avy)))
+   '(org-superstar ace-window markdown-mode magit which-key use-package spacemacs-theme powerline monokai-theme dracula-theme deft counsel beacon avy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

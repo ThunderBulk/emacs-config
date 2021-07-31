@@ -1,6 +1,10 @@
 * Tasks
 ** TODO org-mode
-- [ ] Set up org capture and location
+- [X] Set up org capture and location
 - [ ] Add todo states
 - [ ] Perttier bullets
 - [ ] Show progress with multiple tasks
+- [ ] Org-babel for code snippets
+** Coding
+*** Python
+*** Javascript
