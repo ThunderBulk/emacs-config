@@ -139,7 +139,7 @@
 (setq deft-use-filename-as-title t)
 (setq deft-file-naming-rules '((nospace . "-")
                                (case-fn . downcase)))
-(setq deft-auto-save-interval 0)
+(setq deft-auto-save-interval 5)
 (global-set-key [f8] 'deft)
 (setq deft-strip-summary-regexp
       (concat "\\("
@@ -249,7 +249,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit which-key use-package spacemacs-theme powerline monokai-theme dracula-theme deft counsel beacon avy)))
+   '(markdown-mode magit which-key use-package spacemacs-theme powerline monokai-theme dracula-theme deft counsel beacon avy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
