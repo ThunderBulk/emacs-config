@@ -2,9 +2,12 @@
 ** TODO org-mode
 - [X] Set up org capture and location
 - [ ] Add todo states
-- [ ] Perttier bullets
+- [X] Perttier bullets
 - [ ] Show progress with multiple tasks
 - [ ] Org-babel for code snippets
 ** Coding
 *** Python
 *** Javascript
+** Future
+- [ ] look into [[https://logseq.com][logseq]]; a knowledge management app that syncs with github, open
+  source.
