@@ -1,0 +1,6 @@
+* Tasks
+** TODO org-mode
+- [ ] Set up org capture and location
+- [ ] Add todo states
+- [ ] Perttier bullets
+- [ ] Show progress with multiple tasks
