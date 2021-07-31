@@ -130,40 +130,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package deft
   :ensure t
-  :init
-    (setq deft-extensions '("md" "org" "txt")
-          deft-use-filename-as-title t
-	  deft-directory "/Users/jdhoey/Library/Mobile Documents/iCloud~md~obsidian/Documents/my-brain"
-	  deft-file-naming-rules '((nospace . "-")
-                               (case-fn . downcase)))
-    )
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; zetteldeft
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package zetteldeft
-  :ensure t
-  :after deft
   :config
-  (zetteldeft-set-classic-keybindings)
-  (visual-line-mode t)
-  :init
-  (setq zetteldeft-link-indicator "[["
-	zetteldeft-link-suffix "]]"
-	zetteldeft-title-prefix "# "
-	zetteldeft-id-format "%Y-%m-%d-%H%M"
-	zetteldeft-id-regex "[0-9]\\{4\\}\\(-[0-9]\\{2,\\}\\)\\{3\\}"
-	zetteldeft-tag-regex "[#@][a-z-]+")
-
-(font-lock-add-keywords 'markdown-mode
- `((,zetteldeft-id-regex
-    . font-lock-warning-face)))
-
-(font-lock-add-keywords 'markdown-mode
-   `((,(concat "\\[\\["
-               zetteldeft-id-regex
-               "\\]\\]")
-      . font-lock-warning-face)))
+  (setq deft-directory "/Users/jdhoey/Library/Mobile Documents/iCloud~md~obsidian/Documents/my-brain")
+  (setq deft-extensions '("org" "md" "txt"))
+(setq deft-default-extension "md")
+(setq deft-text-mode 'markdown-mode)
+(setq deft-recursive t)
+(setq deft-use-filename-as-title t)
+(setq deft-file-naming-rules '((nospace . "-")
+                               (case-fn . downcase)))
+(setq deft-auto-save-interval 5)
+(global-set-key [f8] 'deft)
+(setq deft-strip-summary-regexp
+      (concat "\\("
+              "[\n\t]" ;; blank
+              "\\|^#\\+[a-zA-Z_]+:.*$" ;;org-mode metadata
+              "\\)"))
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mode
@@ -234,18 +216,12 @@
   :bind (("M-o" . ace-window)
 	 )
   )
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Use markdown-mode for markdown files
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package markdown-mode
   :ensure t
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
-
+  :mode (".md" ".markdown"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Appearance
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -333,7 +309,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(zetteldeft org-superstar ace-window markdown-mode magit which-key use-package spacemacs-theme powerline monokai-theme dracula-theme deft counsel beacon avy)))
+   '(org-superstar ace-window markdown-mode magit which-key use-package spacemacs-theme powerline monokai-theme dracula-theme deft counsel beacon avy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
